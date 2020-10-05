@@ -51,7 +51,7 @@ Four actions can be used with `data-action` attribute :
 * remove
 
 ## Default values
-Default values can be initialiez with the use of `data-default` without value on select option or with value on text input.
+Default values can be initialiez with the use of `data-default` without value on a select option or with value on text input field.
 
 ## Options
 Different customization options are available
