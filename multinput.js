@@ -41,7 +41,6 @@ function Multinput (target, options) {
 				$(this).val($(this).data('default'));
 			} else if ($(this).prop('type') == 'checkbox') {
 				$(this).prop('checked', true);
-				console.log($(this));
 			} else if ($(this).prop('type') == 'radio') {
 				$(this).prop('checked', true);
 			}
@@ -66,16 +65,10 @@ function Multinput (target, options) {
 		this.target.find('[data-action=movedown]').on('click', function() { that.moveDown($(this).parents('.item')); });
 	}
 
-	Multinput.prototype.addItem = function(currentItem, data){
+	Multinput.prototype.addItem = function(currentItem){
 		var that = this;
-		data = data || false;
 		this.disableTransition();
 		var clone = this.model.clone(true);
-		if (data) {
-			$.each(data, function( key, value ) {
-				clone.find('[name^='+key+']').val(value);
-			});
-		}
 		clone.insertAfter(currentItem);
 		if (this.options.animate) {
 			var defaultMargBot = currentItem.css('margin-bottom');
