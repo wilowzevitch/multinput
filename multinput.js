@@ -1,7 +1,8 @@
+
 /**
  * Multinput.js
  * @author: Tisserand David
- * @version 1.1
+ * @version 1.15
  * @date: 2020-10-04
  *
  * Need JQuery
@@ -65,10 +66,16 @@ function Multinput (target, options) {
 		this.target.find('[data-action=movedown]').on('click', function() { that.moveDown($(this).parents('.item')); });
 	}
 
-	Multinput.prototype.addItem = function(currentItem){
+	Multinput.prototype.addItem = function(currentItem, data){
 		var that = this;
+		data = data || false;
 		this.disableTransition();
 		var clone = this.model.clone(true);
+		if (data) {
+			$.each(data, function( key, value ) {
+				clone.find('[name^='+key+']').val(value);
+			});
+		}
 		clone.insertAfter(currentItem);
 		if (this.options.animate) {
 			var defaultMargBot = currentItem.css('margin-bottom');
